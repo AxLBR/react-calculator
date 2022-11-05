@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100vh;
     background-color: #374774;
-    background-image: url(/bg.png);
+    background-image: url(./bg.png);
     background-repeat: repeat;
     background-size: contain;
     display: flex;
