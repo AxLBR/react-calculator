@@ -6,7 +6,7 @@ const Details = ({label, onClick, info}) => {
       <DetailsContainer info={info} open>
         <summary>Histórico de Cálculos</summary>
         <ul>{label !== '' ? 
-                    label.map((el, i) => {
+                    label.slice(0).reverse().map((el, i) => {
                             return <li key={i}>{el}</li>;
                     }) 
               : ''

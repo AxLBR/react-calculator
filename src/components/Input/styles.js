@@ -26,13 +26,13 @@ export const InputContainer = styled.div`
         padding: 0 10px;
         color: #FFFFFF;
 
-        @media (min-width: 800px) {
+        @media (min-width: 1150px) {
             height: 120px;    
             font-size: 65px;
         }
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 1150px) {
         height: 120px; 
     }
 `

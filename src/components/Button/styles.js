@@ -21,7 +21,7 @@ export const ButtonContainer = styled.button`
         cursor: pointer;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 1150px) {
         height: 85px;    
     }
 `

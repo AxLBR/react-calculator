@@ -31,7 +31,8 @@ const App = () => {
         setOperation('+')
     }else {
       const sum = Number(firstNumber) + Number(currentNumber);
-      const sumString = `${firstNumber} + ${currentNumber} = ${sum}`;
+      const sumFixed = fixNumbers(sum);
+      const sumString = `${firstNumber} + ${currentNumber} = ${sumFixed}`;
       setResults(results => [...results, sumString])
       
       setCurrentNumber(String(sum))
@@ -48,7 +49,8 @@ const App = () => {
         setOperation('-')
     }else {
       const minus = Number(firstNumber) - Number(currentNumber);
-      const minusString = `${firstNumber} - ${currentNumber} = ${minus}`;
+      const minusFixed = fixNumbers(minus);
+      const minusString = `${firstNumber} - ${currentNumber} = ${minusFixed}`;
       setResults(results => [...results, minusString])
 
       setCurrentNumber(String(minus))
@@ -65,7 +67,8 @@ const App = () => {
         setOperation('*')
     }else {
       const product = Number(firstNumber) * Number(currentNumber);
-      const productString = `${firstNumber} * ${currentNumber} = ${product}`;
+      const prodFixed = fixNumbers(product);
+      const productString = `${firstNumber} * ${currentNumber} = ${prodFixed}`;
       setResults(results => [...results, productString])
 
       setCurrentNumber(String(product))
@@ -82,7 +85,8 @@ const App = () => {
         setOperation('/')
     }else {
       const division = Number(firstNumber) / Number(currentNumber);
-      const divString = `${firstNumber} / ${currentNumber} = ${division}`;
+      const divFixed = fixNumbers(division);
+      const divString = `${firstNumber} / ${currentNumber} = ${divFixed}`;
       setResults(results => [...results, divString])
 
       setCurrentNumber(String(division))
@@ -99,7 +103,8 @@ const App = () => {
         setOperation('Pow')
     }else {
       const power = Math.pow(Number(firstNumber), Number(currentNumber));
-      const powString = `${firstNumber} ^ ${currentNumber} = ${power}`;
+      const powFixed = fixNumbers(power);
+      const powString = `${firstNumber} ^ ${currentNumber} = ${powFixed}`;
       setResults(results => [...results, powString])
 
       setCurrentNumber(String(power))
@@ -111,7 +116,8 @@ const App = () => {
   //Exibe o percentual do número
   const handlePercentNumbers = () => {
     const percent = Number(currentNumber) / 100;
-    const percentString = `${currentNumber} / 100 = ${percent}`;
+    const percentFixed = fixNumbers(percent);
+    const percentString = `${currentNumber} / 100 = ${percentFixed}`;
     setResults(results => [...results, percentString])
 
     setCurrentNumber(percent)
@@ -120,7 +126,8 @@ const App = () => {
   //Inverte o sinal do número
   const handleSignalInvert = () => {
     const invert = Number(currentNumber) * -1;
-    const invertString = `${currentNumber} * -1 = ${invert}`;
+    const invertFixed = fixNumbers(invert);
+    const invertString = `${currentNumber} * -1 = ${invertFixed}`;
     setResults(results => [...results, invertString])
 
     setCurrentNumber(invert)
@@ -154,6 +161,15 @@ const App = () => {
           default: 
             break;
         }
+    }
+  }
+
+  //Inverte o sinal do número
+  const fixNumbers = (num) => {
+    if (num % 1 != 0) {
+      return parseFloat(num.toFixed(8))
+    } else {
+      return num;
     }
   }
 

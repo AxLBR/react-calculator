@@ -21,11 +21,15 @@ export const Content = styled.div`
     padding: 25px 15px;
     filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.7));
 
-    @media (max-width: 768px) {
+    @media (max-width: 970px) {
+        margin-top: 155px;
+
+    }
+    @media (max-width: 1149px) {
         width: 315px;
     }
 
-    @media (min-width: 800px) {
+    @media (min-width: 1150px) {
         width: 400px;
         height: 75%;  
         max-height: 650px;
