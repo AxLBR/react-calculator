@@ -7,6 +7,7 @@ export const InputContainer = styled.div`
 
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: flex-end;
 
     font-size: 24px;

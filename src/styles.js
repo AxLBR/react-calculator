@@ -19,6 +19,7 @@ export const Content = styled.div`
     border: 3px solid #667d97;
     border-radius: 25px;
     padding: 25px 15px;
+    filter: drop-shadow(10px 15px 10px rgba(0, 0, 0, 0.7));
 
     @media (max-width: 768px) {
         width: 315px;

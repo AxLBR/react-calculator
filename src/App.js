@@ -1,5 +1,6 @@
 import Input from './components/Input'
 import Button from './components/Button'
+import Details from './components/Detail'
 import { Container, Content, Row, Label } from './styles'
 import { useState } from 'react'
 
@@ -8,17 +9,21 @@ const App = () => {
   const [currentNumber, setCurrentNumber] = useState('0');
   const [firstNumber, setFirstNumber] = useState('0');
   const [operation, setOperation] = useState('');
+  const [results, setResults] = useState('');
 
+  //Limpa a tela da calculadora
   const handleClear = () => {
-    setCurrentNumber('0')
     setFirstNumber('0')
+    setCurrentNumber('0')
     setOperation('')
   };
 
+  //Adiciona um número
   const handleAddNumber = (num) => {
-    setCurrentNumber(prev => `${prev === '0' ? '' : prev}${num}`)
+    setCurrentNumber(prev => `${prev === '0' ? num === '.' ? '0' : '' : prev}${num}`)                    
   }
 
+  //Soma os números
   const handleSumNumbers = () => {
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
@@ -26,11 +31,16 @@ const App = () => {
         setOperation('+')
     }else {
       const sum = Number(firstNumber) + Number(currentNumber);
+      const sumString = `${firstNumber} + ${currentNumber} = ${sum}`;
+      setResults(results => [...results, sumString])
+      
       setCurrentNumber(String(sum))
+      setFirstNumber('0')
       setOperation('')
     }
   }
 
+  //Subtrai os números
   const handleMinusNumbers = () => {
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
@@ -38,11 +48,16 @@ const App = () => {
         setOperation('-')
     }else {
       const minus = Number(firstNumber) - Number(currentNumber);
+      const minusString = `${firstNumber} - ${currentNumber} = ${minus}`;
+      setResults(results => [...results, minusString])
+
       setCurrentNumber(String(minus))
+      setFirstNumber('0')
       setOperation('')
     }
   }
 
+  //Multiplica os números
   const handleProdNumbers = () => {
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
@@ -50,11 +65,16 @@ const App = () => {
         setOperation('*')
     }else {
       const product = Number(firstNumber) * Number(currentNumber);
+      const productString = `${firstNumber} * ${currentNumber} = ${product}`;
+      setResults(results => [...results, productString])
+
       setCurrentNumber(String(product))
+      setFirstNumber('0')
       setOperation('')
     }
   }
 
+  //Divide os números
   const handleDivNumbers = () => {
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
@@ -62,11 +82,16 @@ const App = () => {
         setOperation('/')
     }else {
       const division = Number(firstNumber) / Number(currentNumber);
+      const divString = `${firstNumber} / ${currentNumber} = ${division}`;
+      setResults(results => [...results, divString])
+
       setCurrentNumber(String(division))
+      setFirstNumber('0')
       setOperation('')
     }
   }
 
+  //Faz a potência do primeiro número sobre o segundo
   const handlePowNumbers = () => {
     if(firstNumber === '0'){
         setFirstNumber(String(currentNumber));
@@ -74,23 +99,34 @@ const App = () => {
         setOperation('Pow')
     }else {
       const power = Math.pow(Number(firstNumber), Number(currentNumber));
+      const powString = `${firstNumber} ^ ${currentNumber} = ${power}`;
+      setResults(results => [...results, powString])
+
       setCurrentNumber(String(power))
+      setFirstNumber('0')
       setOperation('')
     }
   }
 
+  //Exibe o percentual do número
   const handlePercentNumbers = () => {
     const percent = Number(currentNumber) / 100;
+    const percentString = `${currentNumber} / 100 = ${percent}`;
+    setResults(results => [...results, percentString])
+
     setCurrentNumber(percent)
-    setOperation('')
   }
 
+  //Inverte o sinal do número
   const handleSignalInvert = () => {
     const invert = Number(currentNumber) * -1;
+    const invertString = `${currentNumber} * -1 = ${invert}`;
+    setResults(results => [...results, invertString])
+
     setCurrentNumber(invert)
-    setOperation('')
   }
 
+  //Função do igual
   const handleEquals = () => {
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
         switch(operation){
@@ -123,8 +159,9 @@ const App = () => {
 
   return (
     <Container>
+      <Details label={results} onClick={() => setResults('')} />
       <Content>
-        <Input value={currentNumber}/>
+        <Input value={currentNumber} />
         <Row>
           <Button info="greenColorSmall" label="Pow" onClick={handlePowNumbers} />
           <Button info="greenColorSmall" label="%" onClick={handlePercentNumbers} /> 

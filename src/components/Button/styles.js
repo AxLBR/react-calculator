@@ -13,11 +13,11 @@ export const ButtonContainer = styled.button`
     font-size: ${props => props.info === "greenColor" || 
                           props.info === "greenButton" ? "35px" :
                           props.info === "greenColorSmall" ? "24px" : "28px"};
-    font-weight: 400;
+    font-weight: ${props => props.info === "redColor" ? "600" : "400"};
     flex: 1;
 
     &:hover {
-        background-color: #3F3F3F;
+        background-color: ${props => props.info === "greenButton" ? "#3c6d0b" : "#3F3F3F"};
         cursor: pointer;
     }
 
