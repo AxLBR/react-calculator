@@ -1,4 +1,4 @@
-# Trilha JS Developer - React Calculator
+# React Calculator
 
 ![preview](./public/preview.jpg)
 
